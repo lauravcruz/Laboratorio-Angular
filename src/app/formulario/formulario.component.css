@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+.layout {
+  text-align: center;
+  margin-top: 60px;
+}
+
+mat-card-title {
+  padding-top: 35px;
+  padding-left: 50px;
+  padding-bottom: 10px;
+  font-family: 'Fjalla One', sans-serif;
+  text-shadow: 2px 2px 2px rgba(84, 97, 103, 0.715);
+}
+
+mat-form-field {
+  margin: 8px;
+  box-shadow: 0px 2px 1px rgba(84, 182, 221, 0.715);
+  padding: 5px;
+
+}
+
+mat-radio-group {
+  /*Para que los botones de las opciones queden alineados y en el centro hacemos un grid*/
+  display: grid;
+  row-gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin: 25px;
+}
+
+.error {
+  color: red;
+}
+
+.add {
+  align-items: flex-end;
+  text-align: right;
+  margin: 20px;
+
+}
+
+.lista {
+  background-color: rgba(234, 226, 226, 0.686);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  min-width: fit-content;
+}
+
+.botones {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+mat-grid-list {
+  text-align: center;
+  max-height: fit-content;
+  height: auto;
+}
+
+.encabezado {
+  text-align: center;
+  color: rgba(79, 78, 78, 0.989);
+}

@@ -1,0 +1,123 @@
+<form #formulario="ngForm" (ngSubmit)="agregar(formulario)">
+  <mat-card-title>Formulario</mat-card-title>
+  <div layout="ng-scope layout-row" class="layout">
+    <div flex>
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input type="text" matInput class="form-control" name="nombre" [(ngModel)]="socio.nombre" #nombre="ngModel"
+          placeholder="Nombre" minlength="3" required>
+
+        <div class="error" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+          <div *ngIf="nombre.errors?.['required']">Nombre obligarorio</div>
+          <div *ngIf="nombre.errors?.['minlength']">Nombre inválido. Mínimo 3 caracteres</div>
+        </div>
+
+      </mat-form-field>
+
+    </div>
+
+    <div flex>
+      <mat-form-field appearance="fill">
+        <mat-label>Apellidos</mat-label>
+        <input type="text" matInput class="form-control" name="apellidos" [(ngModel)]="socio.apellidos"
+          #apellidos="ngModel" placeholder="Apellidos" minlength="3" required>
+
+        <div class="error" *ngIf="apellidos.invalid && (apellidos.dirty || apellidos.touched)">
+          <div *ngIf="apellidos.errors?.['required']">Nombre obligarorio</div>
+          <div *ngIf="apellidos.errors?.['minlength']">Apellido inválido. Mínimo 3 caracteres</div>
+        </div>
+      </mat-form-field>
+    </div>
+
+    <div flex>
+      <mat-form-field appearance="fill">
+        <mat-label>Socio nº</mat-label>
+        <input type="number" matInput class="form-control" name="nsocio" [(ngModel)]="socio.nsocio" #nsocio="ngModel"
+          placeholder="Socio nº" required comprobarSocio>
+
+        <div class="error" *ngIf="nsocio.invalid && (nsocio.dirty || nsocio.touched)">
+          <div *ngIf="nsocio.errors?.['required']">Nº de socio obligarorio</div>
+          <div *ngIf="nsocio.errors?.['comprobarSocio']">Ese nº de socio ya existe. Pruebe con otro</div>
+        </div>
+      </mat-form-field>
+    </div>
+
+    <div flex>
+      <mat-form-field appearance="fill">
+        <mat-label>DNI</mat-label>
+        <input type="text" matInput class="form-control" name="DNI" [(ngModel)]="socio.DNI" #DNI="ngModel"
+          placeholder="DNI" pattern="[0-9]{8}[A-Za-z]{1}" required>
+
+        <div class="error" *ngIf="DNI.invalid && (DNI.dirty || DNI.touched)">
+          <div *ngIf="DNI.errors?.['required']">DNI obligarorio</div>
+          <div *ngIf="DNI.errors?.['pattern']">Debe componerse de 8 números y una letra</div>
+        </div>
+
+      </mat-form-field>
+    </div>
+
+    <div flex>
+      <mat-form-field appearance="fill">
+        <mat-label>Teléfono</mat-label>
+        <input type="text" matInput class="form-control" name="telefono" [(ngModel)]="socio.telefono"
+          #telefono="ngModel" placeholder="Teléfono" minlength="6" required>
+
+        <div class="error" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+          <div *ngIf="telefono.errors?.['required']">Teléfono obligatorio</div>
+          <div *ngIf="telefono.errors?.['min']">Teléfono inválido. Debe tener 6 números</div>
+        </div>
+      </mat-form-field>
+    </div>
+
+    <div flex>
+      <mat-label>Sexo: </mat-label><br>
+      <mat-radio-group name="sexo" #sexo="ngModel" [(ngModel)]="socio.sexo" required>
+        <mat-radio-button value="Masculino">Masculino</mat-radio-button><br>
+        <mat-radio-button value="Femenino">Femenino</mat-radio-button><br>
+      </mat-radio-group>
+
+      <div class="error" *ngIf="(!sexo.touched)">
+        <div *ngIf="sexo.errors?.['required']">Marque su sexo</div>
+      </div>
+
+    </div>
+
+    <div class="botones">
+      <button class="add" mat-raised-button color="primary" type="submit" [disabled]="!formulario.valid">DAR DE ALTA</button>
+    </div>
+  </div>
+</form>
+
+<mat-card class="lista">
+  <mat-card-title>Socios dados de alta: </mat-card-title>
+  <mat-list>
+
+    <mat-grid-list cols="3" rows="3" rowHeight="50px">
+      <mat-list-item *ngFor="let socio of socios; let i = index">
+        <mat-grid-tile>
+          <p><span class="encabezado">Nº de socio:</span><br>{{socio.nsocio}}</p>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p><span class="encabezado">Nombre y apellidos: </span><br>{{socio.nombre }} {{socio.apellidos}}</p>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p><span class="encabezado">DNI: </span><br>{{socio.DNI }}</p>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p><span class="encabezado">Teléfono: </span><br>{{socio.telefono}}</p>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <p><span class="encabezado">Sexo: </span><br>{{socio.sexo}}</p>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2"></mat-grid-tile>
+
+        <mat-grid-tile colspan="1">
+          <button class="button" mat-raised-button color="primary" (click)="modificar(i)">Modificar</button>&nbsp;
+          <button class="button" mat-raised-button color="warn" (click)="borrar(i)">Borrar</button>
+        </mat-grid-tile>
+      </mat-list-item>
+    </mat-grid-list>
+  </mat-list>
+
+</mat-card>
