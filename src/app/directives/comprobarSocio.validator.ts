@@ -1,4 +1,4 @@
-import {AbstractControl, ValidationErrors, ValidatorFn, Validator, NG_VALIDATORS, FormControl} from '@angular/forms';
+import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 import { SociosService } from '../socios.service';
 
 
