@@ -1,18 +1,18 @@
-import {Directive} from '@angular/core';
+import {Directive, Input} from '@angular/core';
 import {AbstractControl, NG_VALIDATORS, ValidationErrors, Validator} from '@angular/forms';
-import { SociosService } from '../socios.service';
+import { SociosService } from '../service/socios.service';
 import { createComprobarSocioValidator } from './comprobarSocio.validator';
 
 @Directive ({
   selector: "[comprobarSocio]",
-  providers: [{provide: NG_VALIDATORS, useExisting: ComprobarSocioDirective, multi: true}, SociosService],
+  providers: [{provide: NG_VALIDATORS, useExisting: ComprobarSocioDirective, multi: true}],
 })
 
 export class ComprobarSocioDirective implements Validator{
 
-  constructor(private SociosService:SociosService){}
+  constructor(private sociosService:SociosService){}
 
   validate(control: AbstractControl): ValidationErrors | null{
-    return createComprobarSocioValidator(this.SociosService)(control);
+    return createComprobarSocioValidator(this.sociosService)(control);
   }
 }

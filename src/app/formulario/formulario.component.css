@@ -9,13 +9,12 @@ mat-card-title {
   padding-top: 30px;
   padding-bottom: 10px;
   font-family: 'Fjalla One', sans-serif;
-  text-shadow: 2px 2px 2px grey;
   color: yellow;
   text-align: center;
 }
 
 mat-form-field {
-  margin: 8px;
+  margin: 10px;
   box-shadow: 0px 2px 1px rgb(209, 255, 6);
   padding: 5px;
   background-color: rgb(255, 255, 255);
@@ -54,7 +53,7 @@ mat-radio-group {
 
 .botones {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-right: 10px;
   margin-bottom: 10px;
 }

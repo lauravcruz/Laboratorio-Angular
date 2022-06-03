@@ -1,5 +1,5 @@
 import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
-import { SociosService } from '../socios.service';
+import { SociosService } from '../service/socios.service';
 
 
 export function createComprobarSocioValidator(sociosService:SociosService): ValidatorFn{

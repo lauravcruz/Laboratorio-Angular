@@ -1,7 +1,7 @@
 <form #formulario="ngForm" (ngSubmit)="agregar(formulario)" grid>
-  <mat-card-title>Formulario de registro para el gimnasio</mat-card-title>
-  <div layout="ng-scope layout-row" class="layout">
-    <div flex>
+  <mat-card-title>¡Quiero unirme al gimnasio!</mat-card-title>
+    <mat-grid-list cols="3" rowHeight="150px">
+      <mat-grid-tile>
       <mat-form-field appearance="fill">
         <mat-label>Nombre</mat-label>
         <input type="text" matInput class="form-control" name="nombre" [(ngModel)]="socio.nombre" #nombre="ngModel"
@@ -11,12 +11,11 @@
           <div *ngIf="nombre.errors?.['required']">Nombre obligarorio</div>
           <div *ngIf="nombre.errors?.['minlength']">Nombre inválido. Mínimo 3 caracteres</div>
         </div>
-
       </mat-form-field>
+    </mat-grid-tile>
 
-    </div>
 
-    <div flex>
+    <mat-grid-tile>
       <mat-form-field appearance="fill">
         <mat-label>Apellidos</mat-label>
         <input type="text" matInput class="form-control" name="apellidos" [(ngModel)]="socio.apellidos"
@@ -27,9 +26,9 @@
           <div *ngIf="apellidos.errors?.['minlength']">Apellido inválido. Mínimo 3 caracteres</div>
         </div>
       </mat-form-field>
-    </div>
+    </mat-grid-tile>
 
-    <div flex>
+    <mat-grid-tile>
       <mat-form-field appearance="fill">
         <mat-label>Socio nº</mat-label>
         <input type="number" matInput class="form-control" name="nsocio" [(ngModel)]="socio.nsocio" #nsocio="ngModel"
@@ -40,9 +39,9 @@
           <div *ngIf="nsocio.errors?.['comprobarSocio']">Ese nº de socio ya existe. Pruebe con otro</div>
         </div>
       </mat-form-field>
-    </div>
+    </mat-grid-tile>
 
-    <div flex>
+    <mat-grid-tile>
       <mat-form-field appearance="fill">
         <mat-label>DNI</mat-label>
         <input type="text" matInput class="form-control" name="DNI" [(ngModel)]="socio.DNI" #DNI="ngModel"
@@ -54,9 +53,9 @@
         </div>
 
       </mat-form-field>
-    </div>
+    </mat-grid-tile>
 
-    <div flex>
+    <mat-grid-tile>
       <mat-form-field appearance="fill">
         <mat-label>Teléfono</mat-label>
         <input type="text" matInput class="form-control" name="telefono" [(ngModel)]="socio.telefono"
@@ -67,24 +66,23 @@
           <div *ngIf="telefono.errors?.['min']">Teléfono inválido. Debe tener 6 números</div>
         </div>
       </mat-form-field>
-    </div>
+    </mat-grid-tile>
 
-    <div flex>
-      <mat-label>Sexo: </mat-label><br>
+    <mat-grid-tile>
+      <mat-label>Sexo: </mat-label>
       <mat-radio-group name="sexo" #sexo="ngModel" [(ngModel)]="socio.sexo" required>
-        <mat-radio-button value="Masculino">Masculino</mat-radio-button><br>
-        <mat-radio-button value="Femenino">Femenino</mat-radio-button><br>
+        <mat-radio-button value="Masculino">Masculino</mat-radio-button>
+        <mat-radio-button value="Femenino">Femenino</mat-radio-button>
       </mat-radio-group>
 
       <div class="error" *ngIf="(!sexo.touched)">
         <div *ngIf="sexo.errors?.['required']">Marque su sexo</div>
       </div>
 
-    </div>
-
-    <div class="botones">
-      <button class="add" mat-raised-button color="primary" type="submit" [disabled]="!formulario.valid">DAR DE ALTA</button>
-    </div>
+  </mat-grid-tile>
+  </mat-grid-list>
+  <div class="botones">
+    <button class="add" mat-raised-button color="primary" type="submit" [disabled]="!formulario.valid">DAR DE ALTA</button>
   </div>
 </form>
 
@@ -98,17 +96,17 @@
           <p><span class="encabezado">Nº de socio:</span><br>{{socio.nsocio}}</p>
         </mat-grid-tile>
         <mat-grid-tile>
-            <p><span class="encabezado">Nombre y apellidos: </span><br>{{socio.nombre }} {{socio.apellidos}}</p>
+          <p><span class="encabezado">Nombre y apellidos: </span><br>{{socio.nombre }} {{socio.apellidos}}</p>
         </mat-grid-tile>
         <mat-grid-tile>
-            <p><span class="encabezado">DNI: </span><br>{{socio.DNI }}</p>
+          <p><span class="encabezado">DNI: </span><br>{{socio.DNI }}</p>
         </mat-grid-tile>
         <mat-grid-tile>
-            <p><span class="encabezado">Teléfono: </span><br>{{socio.telefono}}</p>
+          <p><span class="encabezado">Teléfono: </span><br>{{socio.telefono}}</p>
         </mat-grid-tile>
 
         <mat-grid-tile>
-            <p><span class="encabezado">Sexo: </span><br>{{socio.sexo}}</p>
+          <p><span class="encabezado">Sexo: </span><br>{{socio.sexo}}</p>
         </mat-grid-tile>
         <mat-grid-tile colspan="2"></mat-grid-tile>
 

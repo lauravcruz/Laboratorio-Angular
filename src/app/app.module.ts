@@ -11,7 +11,7 @@ import {MatListModule} from '@angular/material/list';
 import { AppComponent } from './app.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { ComprobarSocioDirective } from './directives/comprobarSocio.directive';
-import { SociosService } from './socios.service';
+import { SociosService } from './service/socios.service';
 
 
 @NgModule({

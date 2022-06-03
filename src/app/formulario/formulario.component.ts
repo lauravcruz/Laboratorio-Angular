@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { _getOptionScrollPosition } from '@angular/material/core';
 import { Socio } from './Socio';
-import { SociosService } from '../socios.service';
+import { SociosService } from '../service/socios.service';
 
 @Component({
   selector: 'app-formulario',
